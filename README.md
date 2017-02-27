@@ -8,15 +8,15 @@ Boost your app's revenue streams and save time: sign up for an account at [Ampir
 
 * [Ampiri Support](#ampiri-support)
 * [Supported Ad Networks and Ad Types](#supported-ad-networks-and-ad-types)
-* [Step 1 - Requirements](#step-1-requirements-and-dependencies)
-* [Step 2 - Add the Ampiri SDK and 3rd-party Networks to your Project](#step-2-add-the-ampiri-sdk-and-to-your-project)
-* [Step 3 - Update your Android Manifest](#step-3-update-your-android-manifest)
-* [Step 4 - Banner Layout and Activity](#step-4-banner-layout-and-activty)
-* [Step 5 - Interstitial Layout and Activity](#step-5-interstitial-layout-and-activty)
-* [Step 6 - Video Layout and Activity](#step-6-video-layout-and-activty)
-* [Step 7 - Native and In-Feed Templates and UI](#step-7-native-and-in-feed-templates-and-ui)
-* [Step 8 - Ad Events Handling (Callbacks)](#step-8-ad-events-handling-callbacks)
-* [Demo App/ Testing](#demo-app-/-testing)
+* [Requirements](#requirements-and-dependencies)
+* [Add the Ampiri SDK and 3rd-party Networks to your Project](#add-the-ampiri-sdk-and-to-your-project)
+* [Update your Android Manifest](#update-your-android-manifest)
+* [Banner Layout and Activity](#banner-layout-and-activty)
+* [Interstitial Layout and Activity](#interstitial-layout-and-activty)
+* [Video Layout and Activity](#video-layout-and-activty)
+* [Native and In-Feed Templates and UI](#native-and-in-feed-templates-and-ui)
+* [Ad Events Handling (Callbacks)](#ad-events-handling-callbacks)
+* [Demo App/ Testing](#demo-sample-app-testing)
 
 ## Ampiri Support
 
@@ -78,7 +78,7 @@ To show *native* ads:
 
 You must set up each 3rd-party network on the Ampiri website, otherwise they will not be used for showing ads.
 
-## Step 1 - Requirements and Dependencies ##
+## Requirements and Dependencies ##
 
 * Android 2.3 (API Version 9) and up
 * support-annotations, v25.2.0
@@ -90,7 +90,7 @@ instead of the`Device ID`, as required by Google. Failing to correctly use the `
 
 >NOTE: You must have a different **adUnitId** for every ad space placement in your app. If you use the same ID for multiple placements or the IDs from the testing/demo examples, reporting errors will occur and there will be no payout. Please ask your account manager for further details.
 
-## Step 2 - Add the Ampiri SDK and 3rd-party Networks to your Project ##
+## Add the Ampiri SDK and 3rd-party Networks to your Project ##
 The Ampiri SDK is available via:
 
 1. jCenter AAR (**Recommended**)
@@ -168,7 +168,7 @@ Then add follow rows in your _app_ module `proguard-rules.pro` file:
 -dontwarn com.ampiri.**
 ```
 
-## Step 3 - Modify your Android Manifest ##
+## Modify your Android Manifest ##
 
 Under the main `<manifest>` element, add the following permissions.
 
@@ -194,7 +194,7 @@ ad assets available even after the user closes the app.
 
 Please see the Android documentation [here](https://developer.android.com/studio/build/shrink-code.html).
 
-## Step 4 - Banner Initialization ##
+## Banner Initialization ##
 Add a banner to layout file, e.g.:
 ```xml
 <FrameLayout
@@ -229,7 +229,7 @@ By default, auto-update is switched on. The auto-update period is set up via the
 
 From version 3.4 onwards, the SDK’s interface includes the `showAd()` method. It is strongly recommended to call this method after the standard banner’s view became visible, as it will then trigger an impression event.
 
-## Step 5 - Interstitial Initialization and Activity ##
+## Interstitial Initialization and Activity ##
 
 > Note: All SDK method calls should be done from the main thread (Main thread, UI thread).
 
@@ -272,7 +272,7 @@ If you want full control over when and where to show full screen banners, use th
 3. When you want to show the banner, check that it is ready and show: `if (interstitialAd.isReady()) interstitialAd.showAd()`
 4. Start loading next banner in `onAdClosed()` event handler of `AdEventCallback`
 
-## Step 6 - Video Initialization and Activity ##
+## Video Initialization and Activity ##
 
 
 > Note: All SDK method calls should be done from the main thread (Main thread, UI thread).
@@ -304,7 +304,7 @@ To learn about download completion, subscribe to video banner events (see [Ad ev
 videoAd.isReady();
 ```
 
-## Step 7 - Native and In-Feed, Templates and UI ##
+## Native and In-Feed, Templates and UI ##
 
 >Note: All SDK method calls should be done from the main thread (Main thread, UI thread).
 
@@ -595,7 +595,7 @@ When in-feed ad download is completed, it will show automatically.
 To learn about download completion, subscribe to ad events (see [Ad events handling](#ad-events-handling) section).
 
 
-## Step 8 - Ad Events Handling (Callbacks)
+## Ad Events Handling (Callbacks)
 
 To receive events from ad, you should implement an event listener interface `AdEventCallback`.
 
